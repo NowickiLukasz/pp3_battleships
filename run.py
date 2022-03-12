@@ -7,14 +7,16 @@ player_board = []
 for i in range(8):
     player_board.append([" "] * 8)
 
-print(player_board)
-
-
 
 
 
 def print_game_board():
-    pass
+    """
+    Prints a layout of the board game, with head legend. 
+    """
+    print("A B C D E F G H")
+    print("===============")
+
 
 
 def create_battleships():
@@ -28,3 +30,6 @@ def player_guess_input():
 def check_if_hit_or_miss():
     pass
 
+
+
+print_game_board()
