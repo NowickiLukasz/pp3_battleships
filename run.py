@@ -5,5 +5,6 @@ used in the game.
 player_board = []
 
 for i in range(8):
-    print(player_board)
+    player_board.append([" "] * 8)
 
+print(player_board)
