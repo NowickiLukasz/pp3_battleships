@@ -34,12 +34,12 @@ def create_battleships(board):
         x_row = randint(0, 7)
         y_column = randint(0, 7)
 
-    while board[x_row] == "@" and board[y_column] == "@":
-        x_row = randint(0, 7)
-        y_column = randint(0, 7)
+        while board[x_row][y_column] == "@":
+            x_row = randint(0, 7)
+            y_column = randint(0, 7)
+        
+        board[x_row][y_column] = "@"
     
-    board[x_row] = "@"    
-    board[y_column] = "@"
 
 
 def player_guess_input():
