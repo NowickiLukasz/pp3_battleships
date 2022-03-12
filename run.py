@@ -1,4 +1,9 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-print("I am workiing")
+"""
+Creates a list of lists in an 8 x 8 pattern to represent a playing board 
+used in the game.
+"""
+player_board = []
+
+for i in range(8):
+    print(player_board)
+
