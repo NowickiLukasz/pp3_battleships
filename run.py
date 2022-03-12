@@ -14,11 +14,12 @@ def print_game_board(board):
     """
     Prints a layout of the board game, with head legend. 
     """
-    print("A B C D E F G H")
-    print("===============")
+    print("  A B C D E F G H")
+    print("  ===============")
     row = 1
     for i in board:
         print(row, "|".join(i))
+        row += 1
 
 
 
