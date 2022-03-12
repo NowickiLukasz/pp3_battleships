@@ -16,9 +16,9 @@ def print_game_board(board):
     """
     print("A B C D E F G H")
     print("===============")
-    
+    row = 1
     for i in board:
-        print(i)
+        print(row, "|".join(i))
 
 
 
