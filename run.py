@@ -10,12 +10,15 @@ for i in range(8):
 
 
 
-def print_game_board():
+def print_game_board(board):
     """
     Prints a layout of the board game, with head legend. 
     """
     print("A B C D E F G H")
     print("===============")
+    
+    for i in board:
+        print(i)
 
 
 
@@ -32,4 +35,4 @@ def check_if_hit_or_miss():
 
 
 
-print_game_board()
+print_game_board(player_board)
