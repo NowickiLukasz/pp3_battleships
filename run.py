@@ -90,12 +90,16 @@ def check_if_hit_or_miss():
     else:
         print("You have missed")
         player_guess_board[x_guess][y_guess] = "-"
+
+    print_game_board(player_guess_board)
     
 
 create_battleships(pc_board)
 create_battleships(player_board)
+print("player Board")
 print_game_board(player_board)
 print_game_board(pc_board)
+print("Guessing Board")
 print_game_board(player_guess_board)
 # player_guess_input()
 
