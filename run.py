@@ -41,7 +41,7 @@ def create_battleships(game_board):
     10 ships created and labled with an "@", to show the location
     If "@" is already present, iterate again to find availabel space.
     """
-    for ship in range(1):
+    for ship in range(10):
         x_row = randint(0, 7)
         y_column = randint(0, 7)
 
@@ -78,12 +78,13 @@ def check_if_hit_or_miss():
     Checks if user input matches location of hidden ship on the pc board.
     If input matches, marks location on the guess board, otherwise marks
     a miss. If the input has already been selected, asks for inout again.
-    Assign 10 rounds per game.
+    Assign 20 rounds per game.
     """    
     round_number = 0
+    ships_found = 0
     
 
-    while round_number <= 10:
+    while round_number <= 20:
         x_guess, y_guess = player_guess_input()
         
         if (player_guess_board[x_guess][y_guess] == "X" or
@@ -93,6 +94,7 @@ def check_if_hit_or_miss():
             print("You have sank a ship")
             player_guess_board[x_guess][y_guess] = "X"
             round_number += 1
+            ships_found += 1
             pc_guess_input()
 
         else:
@@ -105,6 +107,11 @@ def check_if_hit_or_miss():
         print_game_board(player_board)
         print("Guessing Board")
         print_game_board(player_guess_board)
+
+        if ships_found == "10":
+            print("You have found all of the ships.")
+        else: 
+            print(f"You have found {ships_found} ships.")
         
         if round_number == 10:
             print("Game is now over, you have taken up all your moves")
