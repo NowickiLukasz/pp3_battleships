@@ -39,7 +39,7 @@ def create_battleships(game_board):
     """
     Creates ships on the board randomly using row value and column value.
     10 ships created and labled with an "@", to show the location
-    If "@" is already present, iterate again to find availabel space. 
+    If "@" is already present, iterate again to find availabel space.
     """
     for ship in range(10):
         x_row = randint(0, 7)
@@ -76,10 +76,9 @@ def player_guess_input():
 def check_if_hit_or_miss():
     """
     Checks if user input matches location of hidden ship on the pc board.
-    If input matches, marks location on the guess board, otherwise marks 
-    a miss. If the input has already been selected, asaks for inout again. 
-    """
-    
+    If input matches, marks location on the guess board, otherwise marks
+    a miss. If the input has already been selected, asaks for inout again.
+    """    
     x_guess, y_guess = player_guess_input()
 
     if (player_guess_board[x_guess][y_guess] == "X" or
