@@ -81,9 +81,11 @@ def check_if_hit_or_miss():
     Assign 10 rounds per game.
     """    
     round_number = 0
-    x_guess, y_guess = player_guess_input()
+    
 
     while round_number <= 10:
+        x_guess, y_guess = player_guess_input()
+        
         if (player_guess_board[x_guess][y_guess] == "X" or
             player_guess_board[x_guess][y_guess] == "-"):
             print("You have already used these co-ordinates. Please try again. ")
@@ -91,10 +93,13 @@ def check_if_hit_or_miss():
             print("You have sank a ship")
             player_guess_board[x_guess][y_guess] = "X"
             round_number += 1
+            pc_guess_input()
+
         else:
             print("You have missed")
             player_guess_board[x_guess][y_guess] = "-"
             round_number += 1
+            pc_guess_input()
 
         print_game_board(player_guess_board)
         
@@ -106,22 +111,22 @@ def check_if_hit_or_miss():
 def pc_guess_input():
     """
     Allows the pc to randomly generate a guess to look for a ship
-    on a player board. 
+    on a player board.
     If a ship is found, it is marked with an X if missed with a -.
     """
 
     x_pc_rand = randint(0, 7)
     y_pc_rand = randint(0, 7)
 
-    if (player_board[x_pc_rand][y_pc_rand] == "X" or 
-        player_board[x_pc_rand][y_pc_rand]) == "-")
+    if (player_board[x_pc_rand][y_pc_rand] == "X" or
+        player_board[x_pc_rand][y_pc_rand] == "-"):
         x_pc_rand = randint(0, 7)
         y_pc_rand = randint(0, 7)
     elif player_board[x_pc_rand][y_pc_rand] == "@":
         player_board[x_pc_rand][y_pc_rand] = "X"
     else:
         player_board[x_pc_rand][y_pc_rand] = "-"
-        
+
 create_battleships(pc_board)
 create_battleships(player_board)
 print("player Board")
