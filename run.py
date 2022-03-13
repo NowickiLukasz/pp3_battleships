@@ -41,7 +41,7 @@ def create_battleships(game_board):
     10 ships created and labled with an "@", to show the location
     If "@" is already present, iterate again to find availabel space.
     """
-    for ship in range(10):
+    for ship in range(1):
         x_row = randint(0, 7)
         y_column = randint(0, 7)
 
@@ -70,7 +70,7 @@ def player_guess_input():
         y_guess = input("Please enter a column letter between A-H ")
     
     print(x_guess, y_guess)
-    return int(x_guess), convert_to_numbers[y_guess]
+    return int(x_guess) - 1, convert_to_numbers[y_guess]
 
 
 def check_if_hit_or_miss():
@@ -95,6 +95,6 @@ create_battleships(player_board)
 print_game_board(player_board)
 print_game_board(pc_board)
 print_game_board(player_guess_board)
-player_guess_input()
+# player_guess_input()
 
 check_if_hit_or_miss()
