@@ -86,8 +86,10 @@ def check_if_hit_or_miss():
         print("You have already used these co-ordinates. Please try again. ")
     elif pc_board[x_guess][y_guess] == "@":
         print("You have sank a ship")
+        player_guess_board[x_guess][y_guess] = "X"
     else:
         print("You have missed")
+        player_guess_board[x_guess][y_guess] = "-"
     
 
 create_battleships(pc_board)
