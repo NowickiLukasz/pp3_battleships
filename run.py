@@ -103,6 +103,25 @@ def check_if_hit_or_miss():
             break
     
 
+def pc_guess_input():
+    """
+    Allows the pc to randomly generate a guess to look for a ship
+    on a player board. 
+    If a ship is found, it is marked with an X if missed with a -.
+    """
+
+    x_pc_rand = randint(0, 7)
+    y_pc_rand = randint(0, 7)
+
+    if (player_board[x_pc_rand][y_pc_rand] == "X" or 
+        player_board[x_pc_rand][y_pc_rand]) == "-")
+        x_pc_rand = randint(0, 7)
+        y_pc_rand = randint(0, 7)
+    elif player_board[x_pc_rand][y_pc_rand] == "@":
+        player_board[x_pc_rand][y_pc_rand] = "X"
+    else:
+        player_board[x_pc_rand][y_pc_rand] = "-"
+        
 create_battleships(pc_board)
 create_battleships(player_board)
 print("player Board")
