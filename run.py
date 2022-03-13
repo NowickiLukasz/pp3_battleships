@@ -59,8 +59,14 @@ def player_guess_input():
         print("This is not a valid valid input. Enter value from A-H")
         y_guess = input("Please enter a column letter between A-H ")
 
+
 def check_if_hit_or_miss():
-    pass
+    """
+    Checks if user input matches location of hidden ship on the pc board.
+    If input matches, marks location on the guess board, otherwise marks 
+    a miss. If the input has already been selected, asaks for inout again. 
+    """
+    
 
 
 create_battleships(player_board)
