@@ -103,21 +103,21 @@ def check_if_hit_or_miss():
             round_number -= 1
             pc_guess_input()
 
-        print("player Board")
-        print_game_board(player_board)
-        print("Guessing Board")
-        print_game_board(player_guess_board)
-
         if ships_found == "10":
             print("You have found all of the ships.")
-            
             break
-        else: 
+        else:
             print(f"You have found {ships_found} ships.")
             print(f"There are {round_number} rounds remaining")
-        
-        if round_number == 20:
+            print("player Board")
+            print_game_board(player_board)
+            print("Guessing Board")
+            print_game_board(player_guess_board)
+
+        if round_number == 0:
             print("Game is now over, you have taken up all your moves")
+            print("PC Ships Board")
+            print_game_board(pc_board)
             break
     
 
