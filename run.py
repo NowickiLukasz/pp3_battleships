@@ -80,11 +80,11 @@ def check_if_hit_or_miss():
     a miss. If the input has already been selected, asks for inout again.
     Assign 20 rounds per game.
     """    
-    round_number = 0
+    round_number = 20
     ships_found = 0
     
 
-    while round_number <= 20:
+    while round_number >= 0:
         x_guess, y_guess = player_guess_input()
         
         if (player_guess_board[x_guess][y_guess] == "X" or
@@ -93,14 +93,14 @@ def check_if_hit_or_miss():
         elif pc_board[x_guess][y_guess] == "@":
             print("You have sank a ship")
             player_guess_board[x_guess][y_guess] = "X"
-            round_number += 1
+            round_number -= 1
             ships_found += 1
             pc_guess_input()
 
         else:
             print("You have missed")
             player_guess_board[x_guess][y_guess] = "-"
-            round_number += 1
+            round_number -= 1
             pc_guess_input()
 
         print("player Board")
@@ -110,10 +110,13 @@ def check_if_hit_or_miss():
 
         if ships_found == "10":
             print("You have found all of the ships.")
+            
+            break
         else: 
             print(f"You have found {ships_found} ships.")
+            print(f"There are {round_number} rounds remaining")
         
-        if round_number == 10:
+        if round_number == 20:
             print("Game is now over, you have taken up all your moves")
             break
     
