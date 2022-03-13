@@ -82,7 +82,7 @@ def check_if_hit_or_miss():
     """    
     round_number = 0
     x_guess, y_guess = player_guess_input()
-    
+
     while round_number <= 10:
         if (player_guess_board[x_guess][y_guess] == "X" or
             player_guess_board[x_guess][y_guess] == "-"):
@@ -96,9 +96,12 @@ def check_if_hit_or_miss():
             player_guess_board[x_guess][y_guess] = "-"
             round_number += 1
 
-        print(player_guess_board)
         print_game_board(player_guess_board)
         
+        if round_number == 10:
+            print("Game is now over, you have taken up all your moves")
+            break
+    
 
 create_battleships(pc_board)
 create_battleships(player_board)
