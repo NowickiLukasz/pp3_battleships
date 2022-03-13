@@ -77,22 +77,28 @@ def check_if_hit_or_miss():
     """
     Checks if user input matches location of hidden ship on the pc board.
     If input matches, marks location on the guess board, otherwise marks
-    a miss. If the input has already been selected, asaks for inout again.
+    a miss. If the input has already been selected, asks for inout again.
+    Assign 10 rounds per game.
     """    
+    round_number = 0
     x_guess, y_guess = player_guess_input()
-
-    if (player_guess_board[x_guess][y_guess] == "X" or
-        player_guess_board[x_guess][y_guess] == "-"):
-        print("You have already used these co-ordinates. Please try again. ")
-    elif pc_board[x_guess][y_guess] == "@":
-        print("You have sank a ship")
-        player_guess_board[x_guess][y_guess] = "X"
-    else:
-        print("You have missed")
-        player_guess_board[x_guess][y_guess] = "-"
-
-    print_game_board(player_guess_board)
     
+    while round_number <= 10:
+        if (player_guess_board[x_guess][y_guess] == "X" or
+            player_guess_board[x_guess][y_guess] == "-"):
+            print("You have already used these co-ordinates. Please try again. ")
+        elif pc_board[x_guess][y_guess] == "@":
+            print("You have sank a ship")
+            player_guess_board[x_guess][y_guess] = "X"
+            round_number += 1
+        else:
+            print("You have missed")
+            player_guess_board[x_guess][y_guess] = "-"
+            round_number += 1
+
+        print(player_guess_board)
+        print_game_board(player_guess_board)
+        
 
 create_battleships(pc_board)
 create_battleships(player_board)
