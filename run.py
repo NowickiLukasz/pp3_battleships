@@ -5,9 +5,12 @@ Creates a list of lists in an 8 x 8 pattern to represent a playing board
 used in the game.
 """
 player_board = []
-
 for i in range(8):
     player_board.append([" "] * 8)
+
+pc_board = []
+for i in range(8):
+    pc_board.append([" "] * 8)
 
 convert_to_numbers = {
     "A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7
@@ -62,6 +65,7 @@ def player_guess_input():
         y_guess = input("Please enter a column letter between A-H ")
     
     print(x_guess, y_guess)
+    return x_guess, y_guess
 
 
 def check_if_hit_or_miss():
@@ -71,8 +75,10 @@ def check_if_hit_or_miss():
     a miss. If the input has already been selected, asaks for inout again. 
     """
     
+    
 
 
 create_battleships(player_board)
 print_game_board(player_board)
+print_game_board(pc_board)
 player_guess_input()
