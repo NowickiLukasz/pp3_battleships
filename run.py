@@ -70,7 +70,7 @@ def player_guess_input():
         y_guess = input("Please enter a column letter between A-H ")
     
     print(x_guess, y_guess)
-    return x_guess, y_guess
+    return int(x_guess), convert_to_numbers[y_guess]
 
 
 def check_if_hit_or_miss():
@@ -80,6 +80,15 @@ def check_if_hit_or_miss():
     a miss. If the input has already been selected, asaks for inout again. 
     """
     
+    x_guess, y_guess = player_guess_input()
+
+    if (player_guess_board[x_guess][y_guess] == "X" or
+        player_guess_board[x_guess][y_guess] == "-"):
+        print("You have already used these co-ordinates. Please try again. ")
+    elif pc_board[x_guess][y_guess] == "@":
+        print("You have sank a ship")
+    else:
+        print("You have missed")
     
 
 create_battleships(pc_board)
@@ -88,3 +97,5 @@ print_game_board(player_board)
 print_game_board(pc_board)
 print_game_board(player_guess_board)
 player_guess_input()
+
+check_if_hit_or_miss()
