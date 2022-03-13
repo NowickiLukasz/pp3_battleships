@@ -9,7 +9,9 @@ player_board = []
 for i in range(8):
     player_board.append([" "] * 8)
 
-
+convert_to_numbers = {
+    "A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7
+}
 
 
 def print_game_board(game_board):
@@ -58,6 +60,8 @@ def player_guess_input():
     while y_guess not in "ABCDEFGH":
         print("This is not a valid valid input. Enter value from A-H")
         y_guess = input("Please enter a column letter between A-H ")
+    
+    print(x_guess, y_guess)
 
 
 def check_if_hit_or_miss():
