@@ -101,6 +101,9 @@ def check_if_hit_or_miss():
             round_number += 1
             pc_guess_input()
 
+        print("player Board")
+        print_game_board(player_board)
+        print("Guessing Board")
         print_game_board(player_guess_board)
         
         if round_number == 10:
