@@ -72,6 +72,11 @@ def player_guess_input():
     print(x_guess, y_guess)
     return int(x_guess) - 1, convert_to_numbers[y_guess]
 
+def validate_x_input():
+    """
+    Validates user input is correct for the numbers 1-8.
+    """
+
 
 def check_if_hit_or_miss():
     """
@@ -107,6 +112,7 @@ def check_if_hit_or_miss():
             print("You have found all of the ships.")
             break
         else:
+            
             print(f"You have found {ships_found} ships.")
             print(f"There are {round_number} rounds remaining")
             print("player Board")
