@@ -113,12 +113,12 @@ def check_if_hit_or_miss():
             break
         else:
             
-            # print(f"You have found {ships_found} ships.")
-            # print(f"There are {round_number} rounds remaining")
-            # print("player Board")
-            # print_game_board(player_board)
-            # print("Guessing Board")
-            # print_game_board(player_guess_board)
+            print(f"You have found {ships_found} ships.")
+            print(f"There are {round_number} rounds remaining")
+            print("player Board")
+            print_game_board(player_board)
+            print("Guessing Board")
+            print_game_board(player_guess_board)
 
         if round_number == 0:
             print("Game is now over, you have taken up all your moves")
@@ -130,10 +130,22 @@ def check_if_hit_or_miss():
 def play_next_round():
     """
     Asks player if they want to keep on playing the game. 
-    This in turn stops the new boards been printed and helps the 
+    This in turn stops the new boards been printed and helps the
     playher see what instructions the game gives
     """
+    choice = input("Please enter YES for next round or NO to finish \n")
     next_round = ["YES", "NO"]
+
+    try:
+        if next_round not in choice:
+            print(f"Please select YES or NO. You said {choice}")
+    except KeyError:
+        print("Wrong entry, YES or NO required.")
+    
+        
+
+    
+    
 
 
 def pc_guess_input():
