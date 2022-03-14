@@ -108,13 +108,17 @@ def check_if_hit_or_miss():
             round_number -= 1
             pc_guess_input()
 
+        # Asks the player if they want to play another round or to finish game
+        if round_number >= 0:
+            print(f"You have found {ships_found} ships.")
+            print(f"There are {round_number} rounds remaining")
+            play_next_round()
+
         if ships_found == "10":
             print("You have found all of the ships.")
             break
+        
         else:
-            
-            print(f"You have found {ships_found} ships.")
-            print(f"There are {round_number} rounds remaining")
             print("player Board")
             print_game_board(player_board)
             print("Guessing Board")
@@ -141,13 +145,11 @@ def play_next_round():
             print(f"Please select YES or NO. You said {choice}")
     except KeyError:
         print("Wrong entry, YES or NO required.")
-    
-        
 
+    while next_round not in choice:
+        choice = input("Please enter YES for next round or NO to finish \n")
     
     
-
-
 def pc_guess_input():
     """
     Allows the pc to randomly generate a guess to look for a ship
@@ -171,7 +173,7 @@ create_battleships(pc_board)
 create_battleships(player_board)
 print("player Board")
 print_game_board(player_board)
-print_game_board(pc_board)
+# print_game_board(pc_board)
 print("Guessing Board")
 print_game_board(player_guess_board)
 # player_guess_input()
