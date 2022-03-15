@@ -28,10 +28,10 @@ def print_game_board(game_board):
     """
     print("  A B C D E F G H")
     print("  ===============")
-    row = 1
-    for i in game_board:
-        print(row, "|".join(i))
-        row += 1
+    row_number = 1
+    for row in game_board:
+        print(row_number, "|".join(row))
+        row_number += 1
 
 
 
@@ -48,9 +48,8 @@ def create_battleships(game_board):
         while game_board[x_row][y_column] == "@":
             x_row = randint(0, 7)
             y_column = randint(0, 7)
-        
+
         game_board[x_row][y_column] = "@"
-    
 
 
 def player_guess_input():
@@ -64,14 +63,11 @@ def player_guess_input():
     while y_guess not in "ABCDEFGH" or len(y_guess) > 1 or y_guess == "":
         print("This is not a valid valid input. Enter value from A-H")
         y_guess = input("Please enter a column letter between A-H \n").upper()
-    
+
     x_guess = input("Please enter a row number between 1-8 \n")
     while x_guess not in "12345678" or len(x_guess) > 1 or  x_guess == "":
         print("This is not a valid valid input. Enter value from 1-8 ")
         x_guess = input("Please enter a row number between 1-8 \n")
-
-    
-    
     return int(x_guess) - 1, convert_to_numbers[y_guess]
 
 
@@ -81,9 +77,10 @@ def check_if_hit_or_miss():
     If input matches, marks location on the guess board, otherwise marks
     a miss. If the input has already been selected, asks for inout again.
     Assign 20 rounds per game.
-    """    
+    """
     round_number = 20
     ships_found = 0
+    pc_guess_score = 0
     next_round = True
 
     while (round_number >= 0) & next_round:
@@ -113,8 +110,12 @@ def check_if_hit_or_miss():
             pc_guess_input()
 
         # checks if all ships have been found and shows instruction
-        if ships_found == "10":
+        if ships_found == 10:
             print("You have found all of the ships. \n")
+            print("PC Board")
+            print_game_board(pc_board)
+            print("player Board")
+            print_game_board(player_guess_board)
             break
         else:
             print(f"You have found {ships_found} ships. \n")
@@ -125,10 +126,12 @@ def check_if_hit_or_miss():
             print("Game is now over, you have taken up all your moves \n")
             print("PC Ships Board \n")
             print_game_board(pc_board)
+            print_game_board(player_guess_board)
             break
         else:
             next_round = play_next_round()
             
+
 
 def play_next_round():
     """
@@ -148,7 +151,7 @@ def play_next_round():
         print_game_board(player_guess_board)
         return True
     else:
-        print("You have ended the game on move \n")
+        print("You have ended the game. \n")
         print("PC Ships Board")
         print_game_board(pc_board)
     return False
@@ -169,6 +172,7 @@ def pc_guess_input():
         y_pc_rand = randint(0, 7)
     elif player_board[x_pc_rand][y_pc_rand] == "@":
         player_board[x_pc_rand][y_pc_rand] = "X"
+        
     else:
         player_board[x_pc_rand][y_pc_rand] = "-"
 
