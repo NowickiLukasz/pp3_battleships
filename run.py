@@ -60,15 +60,17 @@ def player_guess_input():
     correct
     Returns values to be indexed from 0 value
     """
+    y_guess = input("Please enter a column letter between A-H \n").upper()
+    while y_guess not in "ABCDEFGH" or len(y_guess) > 1 or y_guess == "":
+        print("This is not a valid valid input. Enter value from A-H")
+        y_guess = input("Please enter a column letter between A-H \n").upper()
+    
     x_guess = input("Please enter a row number between 1-8 \n")
     while x_guess not in "12345678" or len(x_guess) > 1 or  x_guess == "":
         print("This is not a valid valid input. Enter value from 1-8 ")
         x_guess = input("Please enter a row number between 1-8 \n")
 
-    y_guess = input("Please enter a column letter between A-H \n").upper()
-    while y_guess not in "ABCDEFGH" or len(y_guess) > 1 or y_guess == "":
-        print("This is not a valid valid input. Enter value from A-H")
-        y_guess = input("Please enter a column letter between A-H \n").upper()
+    
     
     return int(x_guess) - 1, convert_to_numbers[y_guess]
 
