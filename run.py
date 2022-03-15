@@ -69,12 +69,8 @@ def player_guess_input():
         print("This is not a valid valid input. Enter value from A-H")
         y_guess = input("Please enter a column letter between A-H ")
     
+    print(x_guess, y_guess)
     return int(x_guess) - 1, convert_to_numbers[y_guess]
-
-def validate_x_input():
-    """
-    Validates user input is correct for the numbers 1-8.
-    """
 
 
 def check_if_hit_or_miss():
@@ -90,11 +86,10 @@ def check_if_hit_or_miss():
 
     while round_number >= 0:
         x_guess, y_guess = player_guess_input()
-        
+       
         if (player_guess_board[x_guess][y_guess] == "X" or
             player_guess_board[x_guess][y_guess] == "-"):
-            print("You have already used these co-ordinates. Please try again. ")
-            player_guess_input()
+            print("You have already used these co-ordinates. Try again. ")
         elif pc_board[x_guess][y_guess] == "@":
             print("You have sank a ship")
             player_guess_board[x_guess][y_guess] = "X"
@@ -108,17 +103,12 @@ def check_if_hit_or_miss():
             round_number -= 1
             pc_guess_input()
 
-        # Asks the player if they want to play another round or to finish game
-        if round_number >= 0:
-            print(f"You have found {ships_found} ships.")
-            print(f"There are {round_number} rounds remaining")
-            play_next_round()
-
         if ships_found == "10":
             print("You have found all of the ships.")
             break
-        
         else:
+            print(f"You have found {ships_found} ships.")
+            print(f"There are {round_number} rounds remaining")
             print("player Board")
             print_game_board(player_board)
             print("Guessing Board")
@@ -131,25 +121,6 @@ def check_if_hit_or_miss():
             break
     
 
-def play_next_round():
-    """
-    Asks player if they want to keep on playing the game. 
-    This in turn stops the new boards been printed and helps the
-    playher see what instructions the game gives
-    """
-    choice = input("Please enter YES for next round or NO to finish \n")
-    next_round = ["YES", "NO"]
-
-    try:
-        if next_round not in choice:
-            print(f"Please select YES or NO. You said {choice}")
-    except KeyError:
-        print("Wrong entry, YES or NO required.")
-
-    while next_round not in choice:
-        choice = input("Please enter YES for next round or NO to finish \n")
-    
-    
 def pc_guess_input():
     """
     Allows the pc to randomly generate a guess to look for a ship
@@ -174,7 +145,7 @@ create_battleships(pc_board)
 create_battleships(player_board)
 print("player Board")
 print_game_board(player_board)
-# print_game_board(pc_board)
+print_game_board(pc_board)
 print("Guessing Board")
 print_game_board(player_guess_board)
 # player_guess_input()
