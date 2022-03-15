@@ -121,6 +121,29 @@ def check_if_hit_or_miss():
             break
     
 
+<<<<<<< HEAD
+=======
+def play_next_round():
+    """
+    Asks player if they want to keep on playing the game. 
+    This in turn stops the new boards been printed and helps the
+    playher see what instructions the game gives
+    """
+    choice = input("Please enter YES for next round or NO to finish \n")
+    next_round = ["YES", "NO"]
+
+    try:
+        if next_round not in choice:
+            print(f"Please select YES or NO. You said {choice}")
+    except KeyError:
+        print("Wrong entry, YES or NO required.")
+
+    while next_round not in choice:
+        choice = input("Please enter YES for next round or NO to finish \n")
+    
+    
+    
+>>>>>>> verify_round
 def pc_guess_input():
     """
     Allows the pc to randomly generate a guess to look for a ship
