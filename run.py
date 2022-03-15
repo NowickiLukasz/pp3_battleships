@@ -91,6 +91,7 @@ def check_if_hit_or_miss():
         if (player_guess_board[x_guess][y_guess] == "X" or
             player_guess_board[x_guess][y_guess] == "-"):
             print("You have already used these co-ordinates. Try again. \n")
+            player_guess_input()
 
         # Checks if ship present, if yes, marks as hit, increments round
         # Increments score and runs pc guess function
