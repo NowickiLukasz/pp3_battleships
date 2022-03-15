@@ -117,10 +117,6 @@ def check_if_hit_or_miss():
             break
         else:
             next_round = play_next_round()
-            print("player Board")
-            print_game_board(player_board)
-            print("Guessing Board")
-            print_game_board(player_guess_board)
 
 
 def play_next_round():
@@ -134,7 +130,11 @@ def play_next_round():
 
     while choice not in next_round:
         choice = input("Please enter YES for next round or NO to finish \n")
-    if choice == "YES":
+        if choice == "YES":
+            print("player Board")
+            print_game_board(player_board)
+            print("Guessing Board")
+            print_game_board(player_guess_board)
         return True
     return False
 
@@ -157,13 +157,20 @@ def pc_guess_input():
     else:
         player_board[x_pc_rand][y_pc_rand] = "-"
 
-create_battleships(pc_board)
-create_battleships(player_board)
-print("player Board")
-print_game_board(player_board)
-print_game_board(pc_board)
-print("Guessing Board")
-print_game_board(player_guess_board)
 
+def start_of_game():
+    """
+    Starts the game by printing welcome message and asking player for
+    a username.
+    Prints the boards the player will be playing on.
+    """
+    create_battleships(pc_board)
+    create_battleships(player_board)
+    print("player Board")
+    print_game_board(player_board)
+    print_game_board(pc_board)
+    print("Guessing Board")
+    print_game_board(player_guess_board)
 
+start_of_game()
 check_if_hit_or_miss()
