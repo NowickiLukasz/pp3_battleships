@@ -157,6 +157,7 @@ def pc_guess_input():
     If a ship is found, it is marked with an X if missed with a -.
     """
 
+
     x_pc_rand = randint(0, 7)
     y_pc_rand = randint(0, 7)
 
