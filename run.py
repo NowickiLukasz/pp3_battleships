@@ -73,6 +73,18 @@ def player_guess_input():
     return int(x_guess) - 1, convert_to_numbers[y_guess]
 
 
+def validate_x_input(numbers):
+    try:
+        for num in numbers:
+            return (int(num))
+       
+        if int(numbers) < 1 or int(numbers) > 8:
+            print(f"This is not a valid input, you entered {numbers}")
+    except:
+        print(f"Sorry this is wrong {numbers}")
+
+
+
 def check_if_hit_or_miss():
     """
     Checks if user input matches location of hidden ship on the pc board.
@@ -82,9 +94,9 @@ def check_if_hit_or_miss():
     """    
     round_number = 20
     ships_found = 0
-    
+    next_round = True
 
-    while round_number >= 0:
+    while (round_number >= 0) & next_round:
         x_guess, y_guess = player_guess_input()
        
         if (player_guess_board[x_guess][y_guess] == "X" or
@@ -109,20 +121,21 @@ def check_if_hit_or_miss():
         else:
             print(f"You have found {ships_found} ships.")
             print(f"There are {round_number} rounds remaining")
-            print("player Board")
-            print_game_board(player_board)
-            print("Guessing Board")
-            print_game_board(player_guess_board)
+           
 
         if round_number == 0:
             print("Game is now over, you have taken up all your moves")
             print("PC Ships Board")
             print_game_board(pc_board)
             break
+        else:
+            next_round = play_next_round() 
+            print("player Board")
+            print_game_board(player_board)
+            print("Guessing Board")
+            print_game_board(player_guess_board)
     
 
-<<<<<<< HEAD
-=======
 def play_next_round():
     """
     Asks player if they want to keep on playing the game. 
@@ -131,19 +144,21 @@ def play_next_round():
     """
     choice = input("Please enter YES for next round or NO to finish \n")
     next_round = ["YES", "NO"]
-
-    try:
-        if next_round not in choice:
-            print(f"Please select YES or NO. You said {choice}")
-    except KeyError:
-        print("Wrong entry, YES or NO required.")
-
-    while next_round not in choice:
+    
+    while choice not in next_round:
         choice = input("Please enter YES for next round or NO to finish \n")
+    if choice == "YES":
+        return True
+    return False     
+    # try:
+    #     if next_round not in choice:
+    #         print(f"Please select YES or NO. You said {choice}")
+    # except KeyError:
+    #     print("Wrong entry, YES or NO required.")
+
     
     
     
->>>>>>> verify_round
 def pc_guess_input():
     """
     Allows the pc to randomly generate a guess to look for a ship
