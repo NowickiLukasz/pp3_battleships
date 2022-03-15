@@ -73,18 +73,6 @@ def player_guess_input():
     return int(x_guess) - 1, convert_to_numbers[y_guess]
 
 
-def validate_x_input(numbers):
-    try:
-        for num in numbers:
-            return (int(num))
-       
-        if int(numbers) < 1 or int(numbers) > 8:
-            print(f"This is not a valid input, you entered {numbers}")
-    except:
-        print(f"Sorry this is wrong {numbers}")
-
-
-
 def check_if_hit_or_miss():
     """
     Checks if user input matches location of hidden ship on the pc board.
@@ -98,7 +86,7 @@ def check_if_hit_or_miss():
 
     while (round_number >= 0) & next_round:
         x_guess, y_guess = player_guess_input()
-       
+
         if (player_guess_board[x_guess][y_guess] == "X" or
             player_guess_board[x_guess][y_guess] == "-"):
             print("You have already used these co-ordinates. Try again. ")
@@ -123,7 +111,7 @@ def check_if_hit_or_miss():
         else:
             print(f"You have found {ships_found} ships.")
             print(f"There are {round_number} rounds remaining")
-           
+
 
         if round_number == 0:
             print("Game is now over, you have taken up all your moves")
@@ -131,7 +119,7 @@ def check_if_hit_or_miss():
             print_game_board(pc_board)
             break
         else:
-            next_round = play_next_round() 
+            next_round = play_next_round()
             print("player Board")
             print_game_board(player_board)
             print("Guessing Board")
@@ -161,18 +149,12 @@ def play_next_round():
     
     
     
-<<<<<<< HEAD
-    
-=======
->>>>>>> 2131ef1c6306cdae92288d25bb80552e545ab648
 def pc_guess_input():
     """
     Allows the pc to randomly generate a guess to look for a ship
     on a player board.
     If a ship is found, it is marked with an X if missed with a -.
     """
-
-
     x_pc_rand = randint(0, 7)
     y_pc_rand = randint(0, 7)
 
