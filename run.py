@@ -69,7 +69,6 @@ def player_guess_input():
         print("This is not a valid valid input. Enter value from A-H")
         y_guess = input("Please enter a column letter between A-H ")
     
-    print(x_guess, y_guess)
     return int(x_guess) - 1, convert_to_numbers[y_guess]
 
 
@@ -84,7 +83,7 @@ def check_if_hit_or_miss():
     ships_found = 0
     next_round = True
 
-    while (round_number >= 0) & next_round:
+    while (round_number >= 0) and next_round:
         x_guess, y_guess = player_guess_input()
 
         if (player_guess_board[x_guess][y_guess] == "X" or
@@ -96,14 +95,12 @@ def check_if_hit_or_miss():
             round_number -= 1
             ships_found += 1
             pc_guess_input()
-            play_next_round()
 
         else:
             print("You have missed")
             player_guess_board[x_guess][y_guess] = "-"
             round_number -= 1
             pc_guess_input()
-            play_next_round()
 
         if ships_found == "10":
             print("You have found all of the ships.")
@@ -124,7 +121,7 @@ def check_if_hit_or_miss():
             print_game_board(player_board)
             print("Guessing Board")
             print_game_board(player_guess_board)
-    
+
 
 def play_next_round():
     """
@@ -134,21 +131,14 @@ def play_next_round():
     """
     choice = input("Please enter YES for next round or NO to finish \n")
     next_round = ["YES", "NO"]
-    
+
     while choice not in next_round:
         choice = input("Please enter YES for next round or NO to finish \n")
     if choice == "YES":
         return True
-    return False     
-    # try:
-    #     if next_round not in choice:
-    #         print(f"Please select YES or NO. You said {choice}")
-    # except KeyError:
-    #     print("Wrong entry, YES or NO required.")
+    return False
 
-    
-    
-    
+
 def pc_guess_input():
     """
     Allows the pc to randomly generate a guess to look for a ship
@@ -174,6 +164,6 @@ print_game_board(player_board)
 print_game_board(pc_board)
 print("Guessing Board")
 print_game_board(player_guess_board)
-# player_guess_input()
+
 
 check_if_hit_or_miss()
