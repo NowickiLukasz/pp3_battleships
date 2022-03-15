@@ -79,55 +79,56 @@ def check_if_hit_or_miss():
     a miss. If the input has already been selected, asks for inout again.
     Assign 20 rounds per game.
     """    
-    global round_number
     round_number = 20
     ships_found = 0
     next_round = True
 
     while (round_number >= 0) & next_round:
+        # sets values from the player input function
         x_guess, y_guess = player_guess_input()
 
+        # checks if markers present, if yes, asks for repeat input
         if (player_guess_board[x_guess][y_guess] == "X" or
             player_guess_board[x_guess][y_guess] == "-"):
-            print("You have already used these co-ordinates. Try again. ")
+            print("You have already used these co-ordinates. Try again. \n")
+
+        # Checks if ship present, if yes, marks as hit, increments round
+        # Increments score and runs pc guess function
         elif pc_board[x_guess][y_guess] == "@":
-            print("You have sank a ship")
+            print("You have sank a ship \n")
             player_guess_board[x_guess][y_guess] = "X"
             round_number -= 1
             ships_found += 1
             pc_guess_input()
 
+        # Marks a missed guess
         else:
             print("You have missed")
             player_guess_board[x_guess][y_guess] = "-"
             round_number -= 1
             pc_guess_input()
 
+        # checks if all ships have been found and shows instruction
         if ships_found == "10":
-            print("You have found all of the ships.")
+            print("You have found all of the ships. \n")
             break
         else:
-            print(f"You have found {ships_found} ships.")
-            print(f"There are {round_number} rounds remaining")
+            print(f"You have found {ships_found} ships. \n")
+            print(f"There are {round_number} rounds remaining \n")
 
-
+        # Checks if game is over by rounds remaining
         if round_number == 0:
-            print("Game is now over, you have taken up all your moves")
-            print("PC Ships Board")
+            print("Game is now over, you have taken up all your moves \n")
+            print("PC Ships Board \n")
             print_game_board(pc_board)
             break
         else:
             next_round = play_next_round()
-            # print("player Board")
-            # print_game_board(player_board)
-            # print("Guessing Board")
-            # print_game_board(player_guess_board)
             
-
 
 def play_next_round():
     """
-    Asks player if they want to keep on playing the game. 
+    Asks player if they want to keep on playing the game.
     This in turn stops the new boards been printed and helps the
     playher see what instructions the game gives
     """
@@ -143,7 +144,7 @@ def play_next_round():
         print_game_board(player_guess_board)
         return True
     else:
-        print(f"You have ended the game on move {round_number}")
+        print("You have ended the game on move \n")
         print("PC Ships Board")
         print_game_board(pc_board)
     return False
