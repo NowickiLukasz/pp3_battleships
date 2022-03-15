@@ -79,11 +79,12 @@ def check_if_hit_or_miss():
     a miss. If the input has already been selected, asks for inout again.
     Assign 20 rounds per game.
     """    
+    global round_number
     round_number = 20
     ships_found = 0
     next_round = True
 
-    while (round_number >= 0) and next_round:
+    while (round_number >= 0) & next_round:
         x_guess, y_guess = player_guess_input()
 
         if (player_guess_board[x_guess][y_guess] == "X" or
@@ -117,6 +118,11 @@ def check_if_hit_or_miss():
             break
         else:
             next_round = play_next_round()
+            # print("player Board")
+            # print_game_board(player_board)
+            # print("Guessing Board")
+            # print_game_board(player_guess_board)
+            
 
 
 def play_next_round():
@@ -130,12 +136,16 @@ def play_next_round():
 
     while choice not in next_round:
         choice = input("Please enter YES for next round or NO to finish \n")
-        if choice == "YES":
-            print("player Board")
-            print_game_board(player_board)
-            print("Guessing Board")
-            print_game_board(player_guess_board)
+    if choice == "YES":
+        print("player Board")
+        print_game_board(player_board)
+        print("Guessing Board")
+        print_game_board(player_guess_board)
         return True
+    else:
+        print(f"You have ended the game on move {round_number}")
+        print("PC Ships Board")
+        print_game_board(pc_board)
     return False
 
 
