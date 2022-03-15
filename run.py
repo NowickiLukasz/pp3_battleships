@@ -56,18 +56,19 @@ def create_battleships(game_board):
 def player_guess_input():
     """
     Asks the user to enter a row number and a column letter
-    if it is not valid, it will repeat the process untill the value is 
+    if it is not valid, it will repeat the process untill the value is
     correct
+    Returns values to be indexed from 0 value
     """
-    x_guess = input("Please enter a row number between 1-8 ")
+    x_guess = input("Please enter a row number between 1-8 \n")
     while x_guess not in "12345678":
         print("This is not a valid valid input. Enter value from 1-8 ")
-        x_guess = input("Please enter a row number between 1-8 ")
+        x_guess = input("Please enter a row number between 1-8 \n")
 
-    y_guess = input("Please enter a column letter between A-H ")
+    y_guess = input("Please enter a column letter between A-H \n").upper()
     while y_guess not in "ABCDEFGH":
         print("This is not a valid valid input. Enter value from A-H")
-        y_guess = input("Please enter a column letter between A-H ")
+        y_guess = input("Please enter a column letter between A-H \n").upper()
     
     return int(x_guess) - 1, convert_to_numbers[y_guess]
 
@@ -133,11 +134,11 @@ def play_next_round():
     This in turn stops the new boards been printed and helps the
     playher see what instructions the game gives
     """
-    choice = input("Please enter YES for next round or NO to finish \n")
+    choice = input("Please enter YES for next round or NO to finish \n").upper()
     next_round = ["YES", "NO"]
 
     while choice not in next_round:
-        choice = input("Please enter YES for next round or NO to finish \n")
+        choice = input("Please enter YES for next round or NO to finish \n").upper()
     if choice == "YES":
         print("player Board")
         print_game_board(player_board)
