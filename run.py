@@ -1,8 +1,8 @@
 from random import randint
-from tkinter.messagebox import YES
+# from tkinter.messagebox import YES
 
 """
-Creates a list of lists in an 8 x 8 pattern to represent a playing board 
+Creates a list of lists in an 8 x 8 pattern to represent a playing board
 used in the game.
 """
 player_board = []
@@ -24,6 +24,7 @@ convert_to_numbers = {
 
 # PC_GUESS_SCORE = 0
 
+
 def print_game_board(game_board):
     """
     Prints a layout of the board game, with head legend.
@@ -34,7 +35,6 @@ def print_game_board(game_board):
     for row in game_board:
         print(row_number, "|".join(row))
         row_number += 1
-
 
 
 def create_battleships(game_board):
@@ -67,7 +67,7 @@ def player_guess_input():
         y_guess = input("Please enter a column letter between A-H \n").upper()
 
     x_guess = input("Please enter a row number between 1-8 \n")
-    while x_guess not in "12345678" or len(x_guess) > 1 or  x_guess == "":
+    while x_guess not in "12345678" or len(x_guess) > 1 or x_guess == "":
         print("This is not a valid valid input. Enter value from 1-8 ")
         x_guess = input("Please enter a row number between 1-8 \n")
     return int(x_guess) - 1, convert_to_numbers[y_guess]
@@ -91,7 +91,7 @@ def check_if_hit_or_miss():
 
         # checks if markers present, if yes, asks for repeat input
         if (player_guess_board[x_guess][y_guess] == "X" or
-            player_guess_board[x_guess][y_guess] == "-"):
+                player_guess_board[x_guess][y_guess] == "-"):
             print("You have already used these co-ordinates. Try again. \n")
             player_guess_input()
 
@@ -133,7 +133,6 @@ def check_if_hit_or_miss():
             break
         else:
             next_round = play_next_round()
-            
 
 
 def play_next_round():
@@ -142,11 +141,13 @@ def play_next_round():
     This in turn stops the new boards been printed and helps the
     playher see what instructions the game gives
     """
-    choice = input("Please enter YES for next round or NO to finish \n").upper()
+    choice = input(
+        "Please enter YES for next round or NO to finish \n").upper()
     next_round = ["YES", "NO"]
 
     while choice not in next_round:
-        choice = input("Please enter YES for next round or NO to finish \n").upper()
+        choice = input
+        ("Please enter YES for next round or NO to finish \n").upper()
     if choice == "YES":
         print("player Board")
         print_game_board(player_board)
@@ -170,7 +171,7 @@ def pc_guess_input():
     y_pc_rand = randint(0, 7)
 
     if (player_board[x_pc_rand][y_pc_rand] == "X" or
-        player_board[x_pc_rand][y_pc_rand] == "-"):
+            player_board[x_pc_rand][y_pc_rand] == "-"):
         x_pc_rand = randint(0, 7)
         y_pc_rand = randint(0, 7)
     elif player_board[x_pc_rand][y_pc_rand] == "@":
@@ -189,7 +190,6 @@ def main_menu():
 
     start_or_rules = ["YES", "RULES", "NO"]
 
-
     print("Welcome to the battle ships game")
     print("If you want to start say YES")
     print("For rules say RULES")
@@ -199,8 +199,8 @@ def main_menu():
 
     while menu_start not in start_or_rules:
         print(f"Select YES to start the game. You entered {menu_start}")
-        menu_start = input(
-        "Say YES to start the game or RULES to learn the game \n").upper()
+        menu_start = input
+        ("Say YES to start the game or RULES to learn the game \n").upper()
     if menu_start == "YES":
         start_of_game()
         check_if_hit_or_miss()
@@ -212,15 +212,23 @@ def game_rules():
     """
     Prints rules for the game
     """
+    start = ["START"]
+
     print("Welcome to the game of battle ships. \n ")
     print("Here are the game rules \n")
     print("You and your opponent have a board and some ships,")
-    print("the goal is, find the enemy ships before they find all of yours.")
+    print
+    ("the goal is, find the enemy ships before they find all of yours. \n")
+    print("Use row numbers or column letters to find the ships. \n")
+    print("And remember, to say YOU SANK MY BATTLESHIP! once a ship is sunk")
 
-
-    pass
-    
-
+    game_start = input("Type START to begin the game. \n").upper()
+    while game_start not in start:
+        print(f"Please enter START to begin the game. You typed {game_start}")
+        game_start = input("Type START to begin the game.").upper()
+    if game_start == "START":
+        start_of_game()
+        check_if_hit_or_miss()
 
 
 def start_of_game():
@@ -237,6 +245,5 @@ def start_of_game():
     print("Guessing Board")
     print_game_board(player_guess_board)
 
-# start_of_game()
-# check_if_hit_or_miss()
+
 main_menu()
