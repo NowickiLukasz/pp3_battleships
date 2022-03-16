@@ -187,7 +187,7 @@ def main_menu():
     # Welcome message
     # Do you want to start or look at the rules
 
-    start_or_rules = ["YES", "RULES"]
+    start_or_rules = ["YES", "RULES", "NO"]
 
 
     print("Welcome to the battle ships game")
@@ -204,6 +204,21 @@ def main_menu():
     if menu_start == "YES":
         start_of_game()
         check_if_hit_or_miss()
+    elif menu_start == "RULES":
+        game_rules()
+
+
+def game_rules():
+    """
+    Prints rules for the game
+    """
+    print("Welcome to the game of battle ships. \n ")
+    print("Here are the game rules \n")
+    print("You and your opponent have a board and some ships,")
+    print("the goal is, find the enemy ships before they find all of yours.")
+
+
+    pass
     
 
 
