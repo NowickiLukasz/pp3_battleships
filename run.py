@@ -200,11 +200,10 @@ def main_menu():
         "Say YES to start the game or RULES to learn the game \n").upper()
 
     while menu_start not in start_or_rules:
-        # validate_start_menu(menu_start)
-        print("Select YES or RULES to continue.")
+        validate_start_menu(menu_start)
+        menu_start = input(
+        "Say YES to start the game or RULES to learn the game \n").upper()
         
-        menu_start = input
-        ("Say YES to start the game or RULES to learn the game \n").upper()
     if menu_start == "YES":
         start_of_game()
         check_if_hit_or_miss()
@@ -219,7 +218,7 @@ def validate_start_menu(value):
     start_or_rules = ["YES", "RULES"]
     try:
         if value not in start_or_rules or value == "":
-            print(f"no no {value}")
+            print(f"Input provided is incorrect. You gave {value}.")
     except KeyError:
         print("Sorry not availab")
 
