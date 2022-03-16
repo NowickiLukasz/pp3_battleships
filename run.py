@@ -1,6 +1,5 @@
 from random import randint
-from tkinter.messagebox import YES
-# from tkinter.messagebox import YES
+
 
 """
 Creates a list of lists in an 8 x 8 pattern to represent a playing board
@@ -23,6 +22,8 @@ convert_to_numbers = {
     "A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7
 }
 
+next_round = ["YES", "NO"]
+start_or_rules = ["YES", "RULES"]
 # PC_GUESS_SCORE = 0
 
 
@@ -146,11 +147,10 @@ def play_next_round():
         "Please enter YES for next round or NO to finish \n").upper()
     next_round = ["YES", "NO"]
     
-    #needs validation
     while choice not in next_round:
-        print(f"incorrect input {choice} is not valid")
-        choice = input
-        ("Please enter YES for next round or NO to finish \n").upper()
+        validate_round_input(choice)
+        choice = input(
+            "Please enter YES for next round or NO to finish \n").upper()
 
     if choice == "YES":
         print("player Board")
@@ -164,6 +164,17 @@ def play_next_round():
         print("PC Ships Board")
         print_game_board(pc_board)
     return False
+
+
+def validate_round_input(value):
+    """
+    validates input if player wants to continue round
+    """
+    try:
+        if value not in next_round or value == "":
+            print(f"Input provided is incorrect. You gave {value}.")
+    except KeyError:
+        print("Sorry please try again")
 
 
 def pc_guess_input():
@@ -190,7 +201,7 @@ def main_menu():
     """
     Prints query to user if the want to play or see the rules.
     """
-    start_or_rules = ["YES", "RULES"]
+    # start_or_rules = ["YES", "RULES"]
 
     print("Welcome to the battle ships game")
     print("If you want to start say YES")
@@ -215,12 +226,12 @@ def validate_start_menu(value):
     """
     If values entered not in start_or_rules print error
     """
-    start_or_rules = ["YES", "RULES"]
+    # start_or_rules = ["YES", "RULES"]
     try:
         if value not in start_or_rules or value == "":
             print(f"Input provided is incorrect. You gave {value}.")
     except KeyError:
-        print("Sorry not availab")
+        print("Sorry please try again")
 
 def game_rules():
     """
@@ -259,4 +270,5 @@ def start_of_game():
 
 
 main_menu()
+# play_next_round()
 # play_next_round()
