@@ -185,10 +185,7 @@ def main_menu():
     """
     Prints query to user if the want to play or see the rules.
     """
-    # Welcome message
-    # Do you want to start or look at the rules
-
-    start_or_rules = ["YES", "RULES", "NO"]
+    start_or_rules = ["YES", "RULES"]
 
     print("Welcome to the battle ships game")
     print("If you want to start say YES")
@@ -198,7 +195,8 @@ def main_menu():
         "Say YES to start the game or RULES to learn the game \n").upper()
 
     while menu_start not in start_or_rules:
-        print(f"Select YES to start the game. You entered {menu_start}")
+        # validate_start_menu(menu_start)
+        # print("Select YES to start the game.")
         menu_start = input
         ("Say YES to start the game or RULES to learn the game \n").upper()
     if menu_start == "YES":
@@ -206,7 +204,18 @@ def main_menu():
         check_if_hit_or_miss()
     elif menu_start == "RULES":
         game_rules()
+    
 
+def validate_start_menu(value):
+    """
+    If values entered not in start_or_rules print error
+    """
+    start_or_rules = ["YES", "RULES"]
+    try:
+        if value not in start_or_rules or value == "":
+            print(f"no no {value}")
+    except KeyError:
+        print("Sorry not availab")
 
 def game_rules():
     """
@@ -217,8 +226,6 @@ def game_rules():
     print("Welcome to the game of battle ships. \n ")
     print("Here are the game rules \n")
     print("You and your opponent have a board and some ships,")
-    print
-    ("the goal is, find the enemy ships before they find all of yours. \n")
     print("Use row numbers or column letters to find the ships. \n")
     print("And remember, to say YOU SANK MY BATTLESHIP! once a ship is sunk")
 
