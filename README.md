@@ -1,31 +1,70 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+How to play game
+This version of the BATTLESHIPS game consists of 2 players. The user and the PC.
+There are 2 boards that are created. The user board shows the users ships at all times. The PC board is shown with empty rows and columns in which the user has to find the hidden ships. 
 
-Welcome NowickiLukasz,
+The game layout is as follows:
+A hit ship is marked as an "X"
+A miss is marked as an "-"
+Ship placement is marked with an "@"
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The user and PC respectively take turns to find the hidden ships on eachothers boards.
+The winner of the game is the person who finds all of the opponents ships. 
 
-## Reminders
+User Stories
+Python based game where User tries to beat the PC in a game of battleships.
+- Display game welcom page
+- Display menu 
+- Ask player to play or look at the rules
+- user board displayed prepopulated with ships
+- pc board displayed with hidden ships
+- ask user for row guess
+- valid inoput allowed
+- ask user for column guess
+- valid inoput allowed
+- user input checked againt pc board
+- pc guess checked against the player board
+- display message if a ship was hit or missed
+- diplay how many rounds remain
+- ask if player want to continue
+- if player wants to end the game prints PC board and ends the game
+- if player continues, player board and pc board are printed with updated hit or miss marks
+- if user hits all ships display message and end game
+- if pc hits all ships display message and end game
+- if all the round used up end game and prints pc board 
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+Features
+- randomly generated ships on the player board
+- randomly generated ships on PC board which are hidden from the player
+- accepts input from user to allow for row and column position
+- round counter
+- score counter
+- computer random guess functino
 
-## Creating the Heroku app
+Game Logic
+The game begins with the user being welcomed and and asked do they wish to start the game or would they like to read the rules. 
+If the user knows how to play the game, they may type "START" and this will take them to the game boards or if the user wants to read the rules they may type "RULES".
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+Once the user is happy to continue with the game, 2 game boards of 8*8 size are presented. One that belongs to the user. This board is populated with ships ie. "@". 
+The other board belongs to the PC and it shows a black board with hidden ships.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+The user is asked to enter the column value, followed by the row value and the PC randomly selects the values to play. 
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+The user input is then compared to the value of the PC board to see if there a ship hidden in that location. If a ship is present. A marker on the player guess board will be shown with an "X" if the location has no ship a "-" will be marked. 
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+The same process happens for the PC choice but it is marked on the player board instead.
 
-Connect your GitHub repository and deploy as normal.
+Each round is decreased from 20 rounds to 0. If this happens the game ends, if the player or PC have found all of the opponent ships, a message is showns who won the game. 
 
-## Constraints
+future features
+- Larger Ship sizes
+- Ship orientation
+- independent user ship input
+- Change board size
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+testing
 
------
-Happy coding!
+validator testing
+
+deployment
+
+credits

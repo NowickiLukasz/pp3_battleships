@@ -1,4 +1,5 @@
 from random import randint
+from tkinter.messagebox import YES
 # from tkinter.messagebox import YES
 
 """
@@ -144,16 +145,20 @@ def play_next_round():
     choice = input(
         "Please enter YES for next round or NO to finish \n").upper()
     next_round = ["YES", "NO"]
-
+    
+    #needs validation
     while choice not in next_round:
+        print(f"incorrect input {choice} is not valid")
         choice = input
         ("Please enter YES for next round or NO to finish \n").upper()
+
     if choice == "YES":
         print("player Board")
         print_game_board(player_board)
         print("Guessing Board")
         print_game_board(player_guess_board)
         return True
+
     else:
         print("You have ended the game. \n")
         print("PC Ships Board")
@@ -196,7 +201,8 @@ def main_menu():
 
     while menu_start not in start_or_rules:
         # validate_start_menu(menu_start)
-        # print("Select YES to start the game.")
+        print("Select YES or RULES to continue.")
+        
         menu_start = input
         ("Say YES to start the game or RULES to learn the game \n").upper()
     if menu_start == "YES":
@@ -254,3 +260,4 @@ def start_of_game():
 
 
 main_menu()
+# play_next_round()
