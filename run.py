@@ -1,4 +1,5 @@
 from random import randint
+from tkinter.messagebox import YES
 
 """
 Creates a list of lists in an 8 x 8 pattern to represent a playing board 
@@ -21,6 +22,7 @@ convert_to_numbers = {
     "A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7
 }
 
+# PC_GUESS_SCORE = 0
 
 def print_game_board(game_board):
     """
@@ -80,7 +82,7 @@ def check_if_hit_or_miss():
     """
     round_number = 20
     ships_found = 0
-    pc_guess_score = 0
+    # global PC_GUESS_SCORE
     next_round = True
 
     while (round_number >= 0) & next_round:
@@ -126,6 +128,7 @@ def check_if_hit_or_miss():
             print("Game is now over, you have taken up all your moves \n")
             print("PC Ships Board \n")
             print_game_board(pc_board)
+            print("Player Guess Board \n")
             print_game_board(player_guess_board)
             break
         else:
@@ -172,9 +175,37 @@ def pc_guess_input():
         y_pc_rand = randint(0, 7)
     elif player_board[x_pc_rand][y_pc_rand] == "@":
         player_board[x_pc_rand][y_pc_rand] = "X"
-        
+        # global PC_GUESS_SCORE += 1
     else:
         player_board[x_pc_rand][y_pc_rand] = "-"
+
+
+def main_menu():
+    """
+    Prints query to user if the want to play or see the rules.
+    """
+    # Welcome message
+    # Do you want to start or look at the rules
+
+    start_or_rules = ["YES", "RULES"]
+
+
+    print("Welcome to the battle ships game")
+    print("If you want to start say YES")
+    print("For rules say RULES")
+
+    menu_start = input(
+        "Say YES to start the game or RULES to learn the game \n").upper()
+
+    while menu_start not in start_or_rules:
+        print(f"Select YES to start the game. You entered {menu_start}")
+        menu_start = input(
+        "Say YES to start the game or RULES to learn the game \n").upper()
+    if menu_start == "YES":
+        start_of_game()
+        check_if_hit_or_miss()
+    
+
 
 
 def start_of_game():
@@ -191,5 +222,6 @@ def start_of_game():
     print("Guessing Board")
     print_game_board(player_guess_board)
 
-start_of_game()
-check_if_hit_or_miss()
+# start_of_game()
+# check_if_hit_or_miss()
+main_menu()
