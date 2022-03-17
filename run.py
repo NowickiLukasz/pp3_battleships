@@ -84,7 +84,6 @@ def check_if_hit_or_miss():
     """
     round_number = 20
     ships_found = 0
-    # global PC_GUESS_SCORE
     next_round = True
 
     while (round_number >= 0) & next_round:
@@ -114,13 +113,18 @@ def check_if_hit_or_miss():
             pc_guess_input()
 
         # checks if all ships have been found and shows instruction
-        if ships_found == 10:
-            print("You have found all of the ships. \n")
+        if ships_found == 10 or PC_GUESS_SCORE == 10:
             print("PC Board")
             print_game_board(pc_board)
             print("player Board")
             print_game_board(player_guess_board)
+            print("All ships have been found. \n")
+            if ships_found == "10":
+                print("User has won. Well done champ!!")
+            else:
+                print("PC won, Better luck next time")
             break
+
         else:
             print(f"You have found {ships_found} ships. \n")
             print(f"There are {round_number} rounds remaining \n")
@@ -205,7 +209,7 @@ def main_menu():
     """
     # start_or_rules = ["YES", "RULES"]
 
-    print("""\
+    print(r"""\
  _           _   _   _           _     _       
 | |         | | | | | |         | |   (_)      
 | |__   __ _| |_| |_| | ___  ___| |__  _ _ __  
@@ -281,6 +285,6 @@ def start_of_game():
 
 
 main_menu()
-# play_next_round()
-# play_next_round()
-print(PC_GUESS_SCORE)
+# # play_next_round()
+# # play_next_round()
+# print(PC_GUESS_SCORE)
