@@ -63,6 +63,46 @@ future features
 
 testing
 
+Manual testing was performed on the project through the following:
+ - Code passed the PEP8 validator withour major problems
+ - Tested in the python terminal and through Heroku Terminal
+
+When the game loads, the user is greeted and asked if the want to start the ganme or read the rules
+# show main menu image
+When the user selects start, the input is verified to match the requirements, if no match found an error will print and a request to enter an option is prompted again.
+The game then is started and player and PC boards are printed.
+# Show error on main menu
+When the user selects RULES, the input is verified to match the requirements. A rules menu is presented and an option to start the game is shown. 
+Once START is selected game begins
+ - User board is printed with shown ships
+ - PC board is printed with hidden ships
+# show start of the game boards
+The user is asked to provide input for a row and a column. 
+Rows are numbers from 1-8.
+Columns are letters from A-H
+The input then is validated to make sure only the afore mentioned parameters are allowed.
+If there is an error, the user will be promped with their input and then to enter a correct value.
+# show row and column validation
+When the user completes the input, the input is compared to a cell on the pc_board to identify if there is a ship present or no ship. A message is then printed if the user has hit or missed a ship. 
+The player_guess_board then is updated to show an "X" if hit, or "-" if miss. 
+If the player_guess_board contains an "X" or "-" then the user is prompted to try again.
+PC makes a random choice of row and column and checks weather there is a ship present on the player_board. If there is a ship present, player_board is marked with an "X" on a "-" if a miss.
+If a ship is hit by either the PC or user, score is incremented and printed.
+Turns are decreased each round.
+An option then is given to the user to continue or to quit.
+
+ - Check user input against pc_board ship placement
+ - Message printed if hit or miss
+ - Mark placed on the input cell to show that a ship has been miss or hit
+ - PC checks against player_board ship placement
+ - Mark placed on the cell to show that a ship has been miss or hit
+ - Pc and user ships found score incremented and printed
+ - Game turns are decreased each round
+ - User is asked to continue the game or to quit
+# show end of round
+The user 
+
+
 validator testing
 
 deployment
