@@ -203,6 +203,15 @@ def main_menu():
     """
     # start_or_rules = ["YES", "RULES"]
 
+    print("""\
+ _           _   _   _           _     _       
+| |         | | | | | |         | |   (_)      
+| |__   __ _| |_| |_| | ___  ___| |__  _ _ __  
+| '_ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
+| |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
+|_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/ 
+                                        | |    
+                                        |_|    """)
     print("Welcome to the battle ships game")
     print("If you want to start say YES")
     print("For rules say RULES")
