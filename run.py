@@ -24,7 +24,7 @@ convert_to_numbers = {
 
 next_round = ["YES", "NO"]
 start_or_rules = ["YES", "RULES"]
-# PC_GUESS_SCORE = 0
+PC_GUESS_SCORE = 0
 
 
 def print_game_board(game_board):
@@ -124,6 +124,7 @@ def check_if_hit_or_miss():
         else:
             print(f"You have found {ships_found} ships. \n")
             print(f"There are {round_number} rounds remaining \n")
+            print(f"The PC has found {PC_GUESS_SCORE} ships")
 
         # Checks if game is over by rounds remaining
         if round_number == 0:
@@ -185,6 +186,7 @@ def pc_guess_input():
     """
     x_pc_rand = randint(0, 7)
     y_pc_rand = randint(0, 7)
+    global PC_GUESS_SCORE
 
     if (player_board[x_pc_rand][y_pc_rand] == "X" or
             player_board[x_pc_rand][y_pc_rand] == "-"):
@@ -192,7 +194,7 @@ def pc_guess_input():
         y_pc_rand = randint(0, 7)
     elif player_board[x_pc_rand][y_pc_rand] == "@":
         player_board[x_pc_rand][y_pc_rand] = "X"
-        # global PC_GUESS_SCORE += 1
+        PC_GUESS_SCORE += 1
     else:
         player_board[x_pc_rand][y_pc_rand] = "-"
 
@@ -281,3 +283,4 @@ def start_of_game():
 main_menu()
 # play_next_round()
 # play_next_round()
+print(PC_GUESS_SCORE)
