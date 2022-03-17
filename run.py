@@ -251,6 +251,7 @@ def game_rules():
     print("Welcome to the game of battle ships. \n ")
     print("Here are the game rules \n")
     print("You and your opponent have a board and some ships,")
+    print("You have 20 turns to find 10 ships")
     print("Use row numbers or column letters to find the ships. \n")
     print("And remember, to say YOU SANK MY BATTLESHIP! once a ship is sunk")
 
