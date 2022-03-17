@@ -107,6 +107,7 @@ def check_if_hit_or_miss():
 
         # Marks a missed guess
         else:
+            print("\n ")
             print("You have missed")
             player_guess_board[x_guess][y_guess] = "-"
             round_number -= 1
@@ -114,10 +115,7 @@ def check_if_hit_or_miss():
 
         # checks if all ships have been found and shows instruction
         if ships_found == 10 or PC_GUESS_SCORE == 10:
-            print("PC Board")
-            print_game_board(pc_board)
-            print("player Board")
-            print_game_board(player_guess_board)
+            print_endgame_boards()
             print("All ships have been found. \n")
             if ships_found == "10":
                 print("User has won. Well done champ!!")
@@ -126,17 +124,15 @@ def check_if_hit_or_miss():
             break
 
         else:
-            print(f"You have found {ships_found} ships. \n")
-            print(f"There are {round_number} rounds remaining \n")
-            print(f"The PC has found {PC_GUESS_SCORE} ships")
-
+            print(f"You have found {ships_found} ships. ")
+            print(f"The PC has found {PC_GUESS_SCORE} ships. ")
+            print(f"There are {round_number} rounds remaining. ")
+            print("\n ")
+            
         # Checks if game is over by rounds remaining
         if round_number == 0:
             print("Game is now over, you have taken up all your moves \n")
-            print("PC Ships Board \n")
-            print_game_board(pc_board)
-            print("Player Guess Board \n")
-            print_game_board(player_guess_board)
+            print_endgame_boards()
             break
         else:
             next_round = play_next_round()
@@ -146,7 +142,7 @@ def play_next_round():
     """
     Asks player if they want to keep on playing the game.
     This in turn stops the new boards been printed and helps the
-    playher see what instructions the game gives
+    player see what instructions the game gives
     """
     choice = input(
         "Please enter YES for next round or NO to finish \n").upper()
@@ -158,10 +154,7 @@ def play_next_round():
             "Please enter YES for next round or NO to finish \n").upper()
 
     if choice == "YES":
-        print("player Board")
-        print_game_board(player_board)
-        print("Guessing Board")
-        print_game_board(player_guess_board)
+        print_playing_boards()
         return True
 
     else:
@@ -207,8 +200,6 @@ def main_menu():
     """
     Prints query to user if the want to play or see the rules.
     """
-    # start_or_rules = ["YES", "RULES"]
-
     print(r"""\
  _           _   _   _           _     _       
 | |         | | | | | |         | |   (_)      
@@ -231,9 +222,11 @@ def main_menu():
         "Say YES to start the game or RULES to learn the game \n").upper()
         
     if menu_start == "YES":
+        print("\n" *20)
         start_of_game()
         check_if_hit_or_miss()
     elif menu_start == "RULES":
+        print("\n " *20)
         game_rules()
     
 
@@ -241,7 +234,6 @@ def validate_start_menu(value):
     """
     If values entered not in start_or_rules print error
     """
-    # start_or_rules = ["YES", "RULES"]
     try:
         if value not in start_or_rules or value == "":
             print(f"Input provided is incorrect. You gave {value}.")
@@ -277,14 +269,29 @@ def start_of_game():
     """
     create_battleships(pc_board)
     create_battleships(player_board)
+    print_playing_boards()
+
+
+def print_playing_boards():
+    """
+    Prints playing boards used in the game. Updated boards show at each round.
+    """
+    print("\n" * 20)
     print("player Board")
     print_game_board(player_board)
-    print_game_board(pc_board)
+    # print_game_board(pc_board)
     print("Guessing Board")
     print_game_board(player_guess_board)
 
+def print_endgame_boards():
+    """
+    Prints final boards to see where PC ships were located
+    """
+    print("player Board")
+    print_game_board(player_board)
+    print("PC Board")
+    print_game_board(pc_board)
+
 
 main_menu()
-# # play_next_round()
-# # play_next_round()
-# print(PC_GUESS_SCORE)
+
