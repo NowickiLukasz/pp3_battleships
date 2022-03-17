@@ -128,7 +128,7 @@ def check_if_hit_or_miss():
             print(f"The PC has found {PC_GUESS_SCORE} ships. ")
             print(f"There are {round_number} rounds remaining. ")
             print("\n ")
-            
+
         # Checks if game is over by rounds remaining
         if round_number == 0:
             print("Game is now over, you have taken up all your moves \n")
@@ -147,20 +147,21 @@ def play_next_round():
     choice = input(
         "Please enter YES for next round or NO to finish \n").upper()
     next_round = ["YES", "NO"]
-    
+
     while choice not in next_round:
         validate_round_input(choice)
         choice = input(
             "Please enter YES for next round or NO to finish \n").upper()
 
     if choice == "YES":
+        print("\n" * 20)
         print_playing_boards()
         return True
 
     else:
+        print("\n"*20)
         print("You have ended the game. \n")
-        print("PC Ships Board")
-        print_game_board(pc_board)
+        print_endgame_boards()
     return False
 
 
@@ -219,16 +220,16 @@ def main_menu():
     while menu_start not in start_or_rules:
         validate_start_menu(menu_start)
         menu_start = input(
-        "Say YES to start the game or RULES to learn the game \n").upper()
-        
+            "Say YES to start the game or RULES to learn the game \n").upper()
+
     if menu_start == "YES":
-        print("\n" *20)
+        print("\n"*20)
         start_of_game()
         check_if_hit_or_miss()
     elif menu_start == "RULES":
-        print("\n " *20)
+        print("\n "*20)
         game_rules()
-    
+
 
 def validate_start_menu(value):
     """
@@ -239,6 +240,7 @@ def validate_start_menu(value):
             print(f"Input provided is incorrect. You gave {value}.")
     except KeyError:
         print("Sorry please try again")
+
 
 def game_rules():
     """
@@ -279,19 +281,17 @@ def print_playing_boards():
     print("\n" * 20)
     print("player Board")
     print_game_board(player_board)
-    # print_game_board(pc_board)
     print("Guessing Board")
     print_game_board(player_guess_board)
+
 
 def print_endgame_boards():
     """
     Prints final boards to see where PC ships were located
     """
-    print("player Board")
+    print("Player Board")
     print_game_board(player_board)
     print("PC Board")
     print_game_board(pc_board)
 
-
 main_menu()
-
