@@ -120,7 +120,7 @@ def check_if_hit_or_miss():
         if ships_found == 10 or PC_GUESS_SCORE == 10:
             print_endgame_boards()
             print("All ships have been found. \n")
-            if ships_found == "10":
+            if ships_found == 10 :
                 print("User has won. Well done champ!!")
             else:
                 print("PC won, Better luck next time")
@@ -134,7 +134,7 @@ def check_if_hit_or_miss():
 
         # Checks if game is over by rounds remaining
         if round_number == 0:
-            print("Game is now over, you have taken up all your moves \n")
+            print("Game is now over, you have taken up all your moves.")
             print_endgame_boards()
             break
         else:
@@ -260,7 +260,7 @@ def game_rules():
 
     game_start = input("Type START to begin the game. \n").upper()
     while game_start not in start:
-        print(f"Please enter START to begin the game. You typed {game_start}")
+        print(f"Please enter START to begin the game. You typed '{game_start}'")
         game_start = input("Type START to begin the game.").upper()
     if game_start == "START":
         start_of_game()
