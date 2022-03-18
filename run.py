@@ -26,7 +26,8 @@ next_round = ["YES", "NO"]
 start_or_rules = ["YES", "RULES"]
 PC_GUESS_SCORE = 0
 
-
+# Code for board creation taken from Knowledge Mavens tutorial
+# https://www.youtube.com/watch?v=tF1WRCrd_HQ&ab_channel=KnowledgeMavens
 def print_game_board(game_board):
     """
     Prints a layout of the board game, with head legend.
@@ -39,6 +40,8 @@ def print_game_board(game_board):
         row_number += 1
 
 
+# code to create ships in an array taken from 
+# https://github.com/dmoisset/battleship-dojo
 def create_battleships(game_board):
     """
     Creates ships on the board randomly using row value and column value.
@@ -65,12 +68,12 @@ def player_guess_input():
     """
     y_guess = input("Please enter a column letter between A-H \n").upper()
     while y_guess not in "ABCDEFGH" or len(y_guess) > 1 or y_guess == "":
-        print("This is not a valid valid input. Enter value from A-H")
+        print("This is not a valid input. Enter value from A-H")
         y_guess = input("Please enter a column letter between A-H \n").upper()
 
     x_guess = input("Please enter a row number between 1-8 \n")
     while x_guess not in "12345678" or len(x_guess) > 1 or x_guess == "":
-        print("This is not a valid valid input. Enter value from 1-8 ")
+        print("This is not a valid input. Enter value from 1-8 ")
         x_guess = input("Please enter a row number between 1-8 \n")
     return int(x_guess) - 1, convert_to_numbers[y_guess]
 
@@ -171,7 +174,7 @@ def validate_round_input(value):
     """
     try:
         if value not in next_round or value == "":
-            print(f"Input provided is incorrect. You gave {value}.")
+            print(f"Input provided is incorrect. You gave '{value}'.")
     except KeyError:
         print("Sorry please try again")
 
@@ -210,7 +213,7 @@ def main_menu():
 |_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/ 
                                         | |    
                                         |_|    """)
-    print("Welcome to the battle ships game")
+    print("Welcome to the battle ships game. \n")
     print("If you want to start say YES")
     print("For rules say RULES")
 
@@ -253,7 +256,7 @@ def game_rules():
     print("You and your opponent have a board and some ships,")
     print("You have 20 turns to find 10 ships")
     print("Use row numbers or column letters to find the ships. \n")
-    print("And remember, to say YOU SANK MY BATTLESHIP! once a ship is sunk")
+    print("And remember, to say YOU SANK MY BATTLESHIP! once your ship is sunk")
 
     game_start = input("Type START to begin the game. \n").upper()
     while game_start not in start:
@@ -266,9 +269,7 @@ def game_rules():
 
 def start_of_game():
     """
-    Starts the game by printing welcome message and asking player for
-    a username.
-    Prints the boards the player will be playing on.
+    Starts the game by printing the boards the player will be playing on.
     """
     create_battleships(pc_board)
     create_battleships(player_board)
@@ -288,7 +289,8 @@ def print_playing_boards():
 
 def print_endgame_boards():
     """
-    Prints final boards to see where PC ships were located
+    Prints final boards to see where PC ships were located and 
+    where the PC made their moves.
     """
     print("Player Board")
     print_game_board(player_board)
