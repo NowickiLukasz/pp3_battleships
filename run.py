@@ -17,6 +17,8 @@ player_guess_board = []
 for i in range(8):
     player_guess_board.append([" "] * 8)
 
+# code to create ships in an array taken from
+# https://github.com/dmoisset/battleship-dojo
 
 convert_to_numbers = {
     "A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7
@@ -28,6 +30,8 @@ PC_GUESS_SCORE = 0
 
 # Code for board creation taken from Knowledge Mavens tutorial
 # https://www.youtube.com/watch?v=tF1WRCrd_HQ&ab_channel=KnowledgeMavens
+
+
 def print_game_board(game_board):
     """
     Prints a layout of the board game, with head legend.
@@ -40,7 +44,7 @@ def print_game_board(game_board):
         row_number += 1
 
 
-# code to create ships in an array taken from 
+# code to create ships in an array taken from
 # https://github.com/dmoisset/battleship-dojo
 def create_battleships(game_board):
     """
@@ -120,7 +124,7 @@ def check_if_hit_or_miss():
         if ships_found == 10 or PC_GUESS_SCORE == 10:
             print_endgame_boards()
             print("All ships have been found. \n")
-            if ships_found == 10 :
+            if ships_found == 10:
                 print("User has won. Well done champ!!")
             else:
                 print("PC won, Better luck next time")
@@ -205,13 +209,13 @@ def main_menu():
     Prints query to user if the want to play or see the rules.
     """
     print(r"""\
- _           _   _   _           _     _       
-| |         | | | | | |         | |   (_)      
-| |__   __ _| |_| |_| | ___  ___| |__  _ _ __  
-| '_ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \ 
+ _           _   _   _           _     _
+| |         | | | | | |         | |   (_)
+| |__   __ _| |_| |_| | ___  ___| |__  _ _ __
+| '_ \ / _` | __| __| |/ _ \/ __| '_ \| | '_ \
 | |_) | (_| | |_| |_| |  __/\__ \ | | | | |_) |
-|_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/ 
-                                        | |    
+|_.__/ \__,_|\__|\__|_|\___||___/_| |_|_| .__/
+                                        | |
                                         |_|    """)
     print("Welcome to the battle ships game. \n")
     print("If you want to start say YES")
@@ -256,11 +260,11 @@ def game_rules():
     print("You and your opponent have a board and some ships,")
     print("You have 20 turns to find 10 ships")
     print("Use row numbers or column letters to find the ships. \n")
-    print("And remember, to say YOU SANK MY BATTLESHIP! once your ship is sunk")
+    print("And remember, to say YOU SANK MY BATTLESHIP! if your ship is sunk")
 
     game_start = input("Type START to begin the game. \n").upper()
     while game_start not in start:
-        print(f"Please enter START to begin the game. You typed '{game_start}'")
+        print(f"Please enter START to begin the game. You said '{game_start}'")
         game_start = input("Type START to begin the game.").upper()
     if game_start == "START":
         start_of_game()
@@ -289,7 +293,7 @@ def print_playing_boards():
 
 def print_endgame_boards():
     """
-    Prints final boards to see where PC ships were located and 
+    Prints final boards to see where PC ships were located and
     where the PC made their moves.
     """
     print("Player Board")

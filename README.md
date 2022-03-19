@@ -1,15 +1,16 @@
 # Python BAttleShips Game
+<img src="./README-images/batl-responsive.png">
 
-live link - https://pp3-battleships-game.herokuapp.com/
+[BattleShips](https://pp3-battleships-game.herokuapp.com/) game live link.
 
-
+[Repository](https://github.com/NowickiLukasz/pp3_battleships) link. 
 
 ## How to play game
 
 This version of the BATTLESHIPS game consists of 2 players. The user and the PC.
-There are 2 boards that are created. The user board shows the users ships at all times. The PC board is shown with empty rows and columns in which the user has to find the hidden ships. 
+There are 2 boards that are created. The user board shows the users ships at all times. The PC board is shown with empty rows and columns in which the user has to find the hidden ships.
 
-## The game layout is as follows
+## The game layout
 
 A hit ship is marked as an "X"
 A miss is marked as an "-"
@@ -132,7 +133,7 @@ If there is an error, the user will be promped with their input and then to ente
     <summary>Column Validation</summary>
     <img src="./README-images/batl-column-input-validation.png">
 </details>
-When the user completes the input, the input is compared to a cell on the pc_board to identify if there is a ship present or no ship. A message is then printed if the user has hit or missed a ship. 
+When the user completes the input, the input is compared to a cell on the pc_board to identify if there is a ship present or no ship. A message is then printed if the user has hit or missed a ship.
 The player_guess_board then is updated to show an "X" if hit, or "-" if miss.
 If the player_guess_board contains an "X" or "-" then the user is prompted to try again.
 PC makes a random choice of row and column and checks weather there is a ship present on the player_board. If there is a ship present, player_board is marked with an "X" on a "-" if a miss.
@@ -173,7 +174,7 @@ The game runs for 20 rounds. Once the rounds reach 0 the game is over
     <img src="./README-images/batl-game-over.png">
 </details>
 
-the game has 10 ships placed. once all ships are found, a message is displayed on who won.
+The game has 10 ships placed. Once all ships are found, a message is displayed on who won.
 
 <details>
     <summary>All Ships Found PC Win</summary>
@@ -185,22 +186,49 @@ the game has 10 ships placed. once all ships are found, a message is displayed o
     <img src="./README-images/batl-user-win.png">
 </details>
 
-
 For testing purpouses, the PC has been give a choice of 55 ships to chose from, and only needed to hit "2" ships.
-The testing was done on a similar basis.
-During testing, the PC Board was populated and printed to show all of the ships. 
+During player_guess_board testing, a PC Board was populated and printed to show all of the ships. The ship locations were then manualy inserted and each was sank.
 
 Code required to do so needs to be placed in:
 
-`def print_playing_boards()`
+`def print_playing_boards()` and `def print_start_of_game()`
 
-The following displays the PC Board with ships;
+The following code displays the PC Board with ships, and should be placed within the methods above for testing purposes.
 
 `print_game_board(pc_board)`
 
+Validator Testing
 
-validator testing
+<details>
+    <summary>PEP8 Validations</summary>
+    <img src="./README-images/batl-pep8.png">
+</details>
 
-deployment
+## Technologies Used
 
-credits
+- Python3
+- GitHub
+- GitPod
+- Heroku
+- ASCII art
+
+## Deployment
+
+This site was deployed to Heroku by following the below steps:
+
+- On [Heroku.com](), create a new app
+- Under the settings tab, set the build packs to
+    - heroku/python
+    - heroku/nodejs
+- Link the app to the [GitHub Repository](https://github.com/NowickiLukasz/pp3_battleships)
+- Enable automatic Deploys and click Deploy
+- Link to deployed website - [Battleships](https://pp3-battleships-game.herokuapp.com/)
+
+
+## Credits
+
+Initial Code inspired by [Knowledge Mavens](https://www.youtube.com/watch?v=tF1WRCrd_HQ&ab_channel=KnowledgeMavens) video on how to create the logic for the game.
+
+Code to convert from letters to numbers taken from [HERE](https://github.com/dmoisset/battleship-dojo)
+
+[ASCII Art](https://ascii.co.uk/art/battleship) used in the welcome page of the game.
