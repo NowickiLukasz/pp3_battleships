@@ -1,4 +1,4 @@
-# Python BAttleShips Game
+# Python BattleShips Game
 <img src="./README-images/batl-responsive.png">
 
 [BattleShips](https://pp3-battleships-game.herokuapp.com/) game live link.
@@ -51,7 +51,7 @@ Python based game where User tries to beat the PC in a game of battleships
 - Accepts input from user to allow for row and column position
 - Round counter
 - Score counter
-- Computer random guess functino
+- Computer random guess function
 
 ## Game Logic
 

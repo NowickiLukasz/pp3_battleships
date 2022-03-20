@@ -244,7 +244,7 @@ def validate_start_menu(value):
     """
     try:
         if value not in start_or_rules or value == "":
-            print(f"Input provided is incorrect. You gave {value}.")
+            print(f"Input provided is incorrect. You gave '{value}'.")
     except KeyError:
         print("Sorry please try again")
 
@@ -259,6 +259,9 @@ def game_rules():
     print("Here are the game rules \n")
     print("You and your opponent have a board and some ships,")
     print("You have 20 turns to find 10 ships")
+    print("Ships are identified with a '@'")
+    print("If you hit a ship id hit, it is marked with an 'X'")
+    print("If a miss occurs, it is marked with an '-'")
     print("Use row numbers or column letters to find the ships. \n")
     print("And remember, to say YOU SANK MY BATTLESHIP! if your ship is sunk")
 
